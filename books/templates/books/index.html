@@ -1,0 +1,50 @@
+{% extends 'books/template_site.html'%}
+
+
+{% block content %}
+<form method="GET">
+	<div class="search_form">
+		{{ filter.form.title_book }}
+	</div>
+	<div class="search_form">
+		{{ filter.form.author }}
+	</div>
+	<button class="btn btn-primary" style="width: 300px; margin-left: 5px;">Поиск</button>
+</form>
+
+<h1>Список книг</h1>
+
+<ol>
+	{% for book in books %}
+	<li>
+		<div class="list_books_and_authors">
+			<a href="book/{{book.pk}}">
+				<h4>{{book.title_book}} |&#160;</h4>
+			</a>
+			<a href="about_author/{{book.author.pk}}">
+				<h4>{{book.author}} &#160;</h4>
+			</a>
+			{% if request.user.is_superuser %}
+				<a class="fix_book" href="update_book/{{book.pk}}">
+					<p>Изменить \&#160;</p>
+				</a>
+				<a class="fix_book" href="{% url 'books:delete_book' pk=book.pk%}">
+					<p>Удалить</p>
+				</a>
+			{% endif %}
+			<!-- <p><h4>{{book.genre_book}}</h4></p> -->
+		</div>
+	</li>
+	{% empty %}
+	<a href="">
+		<h4>Книги не найдены</h4>
+	</a>
+	{% endfor %}
+</ol>
+
+<footer>
+	<a href="about_site">О нас</a>
+</footer>
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'books/template_site.html'%}
+
+
+
+{% block content %}
+
+<h1>Книга</h1>
+<p>Удаление книги "{{book.title_book}}" автора "{{book.author}}" с сайта</p>
+
+<form action="{% url 'books:delete_book' pk=book.pk %}" method="POST">
+	{% csrf_token%}
+	{{form}}
+	<button class="btn btn-primary" type="submit">Удалить книгу</button>
+	<button class="btn btn-primary" type="reset">Отменить</button>
+</form>
+
+
+
+{% endblock %}

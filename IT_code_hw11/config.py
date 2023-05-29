@@ -1,0 +1,1 @@
+TOKEN = 'django-insecure-2gh$4x9*q+hh29+olys07wuypu$a78#b@h$ute#z3-0oq)^mq6'

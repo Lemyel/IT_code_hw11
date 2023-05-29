@@ -1,0 +1,16 @@
+{% extends 'books/template_site.html'%}
+
+
+
+{% block content %}
+
+<h1>{{book.title_book}}</h1>
+
+<h3>Автор: {{book.author}}</h3>
+<div>
+	<p class="content_book">{{book.content_book}}</p>
+</div>
+
+
+
+{% endblock %}
